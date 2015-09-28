@@ -184,17 +184,20 @@ namespace kZKarthus
 
         public static void SafeMana()
         {
-            if(!Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear) || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear))
+            if (Settings.saveE)
             {
-                if (!SpellManager.E.IsReady() || Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState != 2) // 1 = off , 2 = on
-                    return;
-
-                var Range = SpellManager.E.Range + 100;
-                var Etarget = TargetSelector.GetTarget(Range, DamageType.Magical);
-
-                if (SpellManager.E.IsReady() && Etarget == null)
+                if (!Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear) || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear))
                 {
-                    SpellManager.E.Cast();
+                    if (!SpellManager.E.IsReady() || Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState != 2) // 1 = off , 2 = on
+                        return;
+
+                    var Range = SpellManager.E.Range + 100;
+                    var Etarget = TargetSelector.GetTarget(Range, DamageType.Magical);
+
+                    if (SpellManager.E.IsReady() && Etarget == null)
+                    {
+                        SpellManager.E.Cast();
+                    }
                 }
             }
         }

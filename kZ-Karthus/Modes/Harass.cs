@@ -5,6 +5,7 @@ using EloBuddy.SDK.Enumerations;
 // Using the config like this makes your life easier, trust me
 using Settings = kZKarthus.Config.Modes.Harass;
 using SettingsPred = kZKarthus.Config.Modes.PredictionMenu;
+using SettingsCombo = kZKarthus.Config.Modes.Combo;
 
 namespace kZKarthus.Modes
 {
@@ -75,13 +76,19 @@ namespace kZKarthus.Modes
                 else
                 {
                     if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2) // 1 = off , 2 = on
-                        E.Cast();
+                        if (SettingsCombo.saveE)
+                        {
+                            E.Cast();
+                        }
                 }
             }
             else
             {
                 if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2) // 1 = off , 2 = on
-                    E.Cast();
+                    if (SettingsCombo.saveE)
+                    {
+                        E.Cast();
+                    }
             }
             if (Settings.UseW && Player.Instance.ManaPercent > Settings.WMana && W.IsReady())
             {

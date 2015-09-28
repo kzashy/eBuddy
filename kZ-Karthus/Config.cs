@@ -78,6 +78,7 @@ namespace kZKarthus
                 private static readonly CheckBox _useAA;
                 private static readonly CheckBox _useAC;
                 private static readonly CheckBox _useUltKS;
+                private static readonly CheckBox _saveE;
 
                 public static bool UseQ
                 {
@@ -103,6 +104,10 @@ namespace kZKarthus
                 {
                     get { return _useUltKS.CurrentValue; }
                 }
+                public static bool saveE
+                {
+                    get { return _saveE.CurrentValue; }
+                }
 
                 static Combo()
                 {
@@ -123,6 +128,7 @@ namespace kZKarthus
                     Menu.AddSeparator();
                     Menu.AddGroupLabel("Misc");
                     _useUltKS = Menu.Add("useUltKS", new CheckBox("Use Ultimate KS", true));
+                    _saveE = Menu.Add("ESave", new CheckBox("Auto switch E to save MP (Turn off if you have problems with E use.)", true));
                 }
 
                 public static void Initialize()

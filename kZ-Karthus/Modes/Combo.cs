@@ -75,7 +75,10 @@ namespace kZKarthus.Modes
                 else
                 {
                     if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2) // 1 = off , 2 = on
-                        E.Cast();
+                        if (Settings.saveE)
+                        {
+                            E.Cast();
+                        }
                 }
             }
             if (Settings.UseW && W.IsReady())

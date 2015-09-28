@@ -11,6 +11,7 @@ using EloBuddy.SDK.Rendering;
 using SharpDX;
 
 using Settings = kZKarthus.Config.Modes.LaneClear;
+using SettingsCombo = kZKarthus.Config.Modes.Combo;
 
 namespace kZKarthus.Modes
 {
@@ -187,13 +188,19 @@ namespace kZKarthus.Modes
                     else
                     {
                         if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2) // 1 = off , 2 = on
-                            E.Cast();
+                            if (SettingsCombo.saveE)
+                            {
+                                E.Cast();
+                            }
                     }
                 }
                 else
                 {
                     if (Player.Instance.Spellbook.GetSpell(SpellSlot.E).ToggleState == 2) // 1 = off , 2 = on
-                        E.Cast();
+                        if (SettingsCombo.saveE)
+                        {
+                            E.Cast();
+                        }
                 }
 
             }
