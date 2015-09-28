@@ -20,3 +20,4 @@ C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\bin\Debug\SharpDX.dll
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\obj\Debug\kZ-Karthus.exe
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\obj\Debug\kZ-Karthus.pdb
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\obj\Debug\kZ-Karthus.csprojResolveAssemblyReference.cache
