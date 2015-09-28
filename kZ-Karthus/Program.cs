@@ -82,9 +82,12 @@ namespace kZKarthus
         {
             if (SettingsGap.UseWonGap)
             {
-                //cast [E] at end position of le gapcloser
-                if (SpellManager.W.IsReady() && e.End.Distance(Player.Instance.Position) <= SpellManager.W.Range - 150)
-                    SpellManager.W.Cast(e.End);
+                if (!sender.IsValidTarget(SpellManager.W.Range) || sender.IsMinion || sender.IsAlly)
+                {
+                    return;
+                }
+                if (SpellManager.W.IsReady() && sender.Distance(Player.Instance.Position) <= SpellManager.W.Range - 50)
+                    SpellManager.W.Cast(sender.Position);
             }
         }
 
