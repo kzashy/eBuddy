@@ -21,7 +21,7 @@ namespace kZKarthus
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             Menu.AddGroupLabel("WkZ-Karthus");
             Menu.AddSeparator();
-            Menu.AddLabel("Version : 1.0.1.94");
+            Menu.AddLabel("Version : 1.0.2.16");
             Menu.AddLabel("Author : Kzashy");
 
             // Initialize the modes

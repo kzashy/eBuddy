@@ -55,7 +55,7 @@ namespace kZKarthus
                 ModeManager.Initialize();
 
                 Chat.Print("<font color=\"#c71ef9\">kZ-Karthus by</font> <font color=\"#1bd6eb\">Kzashy</font> - <font color=\"#8ee51b\"> loaded, have fun!</font>");
-                Chat.Print("<font color=\"#c71ef9\"> Version :</font> <font color=\"#fe5212\"> 1.0.1.94</font>");
+                Chat.Print("<font color=\"#c71ef9\"> Version :</font> <font color=\"#fe5212\">1.0.2.16</font>");
             } catch (Exception e)
             {
                 //
