@@ -79,6 +79,7 @@ namespace kZKarthus
                 private static readonly CheckBox _useAC;
                 private static readonly CheckBox _useUltKS;
                 private static readonly CheckBox _saveE;
+                private static readonly CheckBox _useIgnite;
 
                 public static bool UseQ
                 {
@@ -108,6 +109,10 @@ namespace kZKarthus
                 {
                     get { return _saveE.CurrentValue; }
                 }
+                public static bool useIgnite
+                {
+                    get { return _useIgnite.CurrentValue; }
+                }
 
                 static Combo()
                 {
@@ -127,6 +132,7 @@ namespace kZKarthus
 
                     Menu.AddSeparator();
                     Menu.AddGroupLabel("Misc");
+                    _useIgnite = Menu.Add("useIgnite", new CheckBox("Use Ignite If Killable", true));
                     _useUltKS = Menu.Add("useUltKS", new CheckBox("Use Ultimate KS", true));
                     _saveE = Menu.Add("ESave", new CheckBox("Auto switch E to save MP (Turn off if you have problems with E use.)", true));
                 }

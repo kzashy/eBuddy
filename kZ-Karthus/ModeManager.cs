@@ -23,6 +23,10 @@ namespace kZKarthus
     {
         private static List<ModeBase> Modes { get; set; }
 
+        private static SpellSlot ignite;
+        public static readonly Spell.Targeted Ignite =
+        new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("summonerdot"), 600);
+
         static ModeManager()
         {
             // Initialize properties
@@ -81,6 +85,20 @@ namespace kZKarthus
             }
 
             return DMG;
+        }
+
+        public static void CheckIgnite_Enemy()
+        {
+            if (Settings.useIgnite)
+            {
+                var Target = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
+
+                if (Ignite.IsInRange(Target)
+                    && Target.Health < 50 + 20 * Player.Instance.Level - (Target.HPRegenRate / 5 * 3))
+                {
+                    Ignite.Cast(Target);
+                }
+            }
         }
 
         public static void AutoCast()
@@ -207,15 +225,18 @@ namespace kZKarthus
             try
                 
             {
+                CheckIgnite_Enemy();
                 AutoCast();
                 // Execute all modes
                 Modes.ForEach(mode =>
                 {
+                    CheckIgnite_Enemy();
                     AutoCast();
                     // Precheck if the mode should be executed
                     if (mode.ShouldBeExecuted())
                     {
                         // Execute the mode
+                        ModeManager.CheckIgnite_Enemy();
                         ModeManager.AutoCast();
                         mode.Execute();
                         //Program.UltKS();
