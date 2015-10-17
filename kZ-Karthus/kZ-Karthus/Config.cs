@@ -144,6 +144,7 @@ namespace kZKarthus
 
             public static class Harass
             {
+                private static readonly CheckBox _useQlh;
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
@@ -151,6 +152,11 @@ namespace kZKarthus
                 private static readonly Slider _harassManaW;
                 private static readonly Slider _harassManaE;
 
+
+                public static bool UseQlh
+               {
+                    get { return _useQlh.CurrentValue; }
+                }
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
@@ -184,6 +190,11 @@ namespace kZKarthus
                     _useQ = Menu.Add("harassUseQ", new CheckBox("Use Q"));
                     _useW = Menu.Add("harassUseW", new CheckBox("Use W", false));
                     _useE = Menu.Add("harassUseE", new CheckBox("Use E"));
+                    Menu.AddSeparator();
+
+                    Menu.AddGroupLabel("Farm Options");
+                    Menu.AddLabel("Q will prioritize the enemy champion.");
+                    _useQlh = Menu.Add("harassUseQLastHit", new CheckBox("Use Q to Lasthit minions on Harass"));
                     Menu.AddSeparator();
 
                     Menu.AddGroupLabel("Mana");

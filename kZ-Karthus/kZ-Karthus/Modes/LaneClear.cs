@@ -111,8 +111,6 @@ namespace kZKarthus.Modes
             }
 
             //LASTHIT
-
-
             if (Settings.UseQ && Player.Instance.ManaPercent >= Settings.QMana && Settings.UseQOnlyK)
             {
                 var allMinionsQLast = ObjectManager.Get<Obj_AI_Base>().Where(t => Q.IsInRange(t) && t.IsValidTarget() && t.IsMinion && t.IsEnemy && (t.Health <= QDamage(t))).OrderBy(t => t.Health);

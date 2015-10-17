@@ -2,6 +2,9 @@
 using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
 
+using System;
+using System.Linq;
+
 // Using the config like this makes your life easier, trust me
 using Settings = kZKarthus.Config.Modes.Harass;
 using SettingsPred = kZKarthus.Config.Modes.PredictionMenu;
@@ -47,6 +50,40 @@ namespace kZKarthus.Modes
             return HitChance.Medium;
         }
 
+        float QDamage(Obj_AI_Base target)
+        {
+            var DMG = 0f;
+
+            if (SpellManager.Q.Level == 1)
+            {
+                DMG = 75f + (0.55f * Player.Instance.FlatMagicDamageMod);
+                DMG = Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, DMG);
+            }
+            if (SpellManager.Q.Level == 2)
+            {
+                DMG = 110f + (0.55f * Player.Instance.FlatMagicDamageMod);
+                DMG = Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, DMG);
+            }
+            if (SpellManager.Q.Level == 3)
+            {
+                DMG = 140f + (0.55f * Player.Instance.FlatMagicDamageMod);
+                DMG = Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, DMG);
+            }
+            if (SpellManager.Q.Level == 4)
+            {
+                DMG = 180f + (0.55f * Player.Instance.FlatMagicDamageMod);
+                DMG = Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, DMG);
+            }
+            if (SpellManager.Q.Level == 5)
+            {
+                DMG = 220f + (0.55f * Player.Instance.FlatMagicDamageMod);
+                DMG = Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, DMG);
+            }
+
+            return DMG;
+        }
+
+
         public override void Execute()
         {
             // TODO: Add harass logic here
@@ -61,6 +98,67 @@ namespace kZKarthus.Modes
                     if (Pred.HitChance == PredQ())
                     {
                         Q.Cast(Pred.CastPosition);
+                    }
+                }
+                else
+                {
+                    if (Settings.UseQlh)
+                    {
+                        //LASTHIT
+                        if (Settings.UseQ && Player.Instance.ManaPercent >= Settings.QMana)
+                        {
+                            var allMinionsQLast = ObjectManager.Get<Obj_AI_Base>().Where(t => Q.IsInRange(t) && t.IsValidTarget() && t.IsMinion && t.IsEnemy && (t.Health <= QDamage(t))).OrderBy(t => t.Health);
+
+                            if (allMinionsQLast == null)
+                            {
+                                return;
+                            }
+
+                            var QLocation = Prediction.Position.PredictCircularMissileAoe(allMinionsQLast.ToArray(), Q.Range, Q.Radius, Q.CastDelay, Q.Speed, Player.Instance.Position);//R.GetPrediction(allMinionsR.FirstOrDefault());
+                            //var r2Location = Prediction.Position.PredictCircularMissileAoe(rangedMinionsR.ToArray(), R.Range, R.Radius, R.CastDelay, R.Speed, PlayerInstance.Position);//R.GetPrediction(rangedMinionsR.FirstOrDefault());
+                            var useQonMinion = Settings.UseQ;
+
+                            if (useQonMinion)
+                            {
+                                if (QLocation == null)
+                                {
+                                    return;
+                                }
+                                else
+                                {
+                                    if (useQonMinion)
+                                    {
+                                        foreach (var pred in QLocation)
+                                        {
+                                            if (pred.CollisionObjects.Count() > 0 && pred.CollisionObjects.Count() <= 3)
+                                            {
+                                                if (Q.IsReady() && Q.IsInRange(pred.CastPosition))
+                                                {
+                                                    Q.Cast(pred.CastPosition);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (var pred in QLocation)
+                                        {
+                                            if (pred.CollisionObjects.Count() == 2)
+                                            {
+                                                if (Q.IsReady() && Q.IsInRange(pred.CastPosition))
+                                                {
+                                                    Q.Cast(pred.CastPosition);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+
+                        }
+
+                        //EndLastHit
                     }
                 }
             }

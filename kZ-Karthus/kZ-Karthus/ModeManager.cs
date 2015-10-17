@@ -23,7 +23,7 @@ namespace kZKarthus
     {
         private static List<ModeBase> Modes { get; set; }
 
-        private static SpellSlot ignite;
+        //private static SpellSlot ignite;
         public static readonly Spell.Targeted Ignite =
         new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("summonerdot"), 600);
 
@@ -139,7 +139,7 @@ namespace kZKarthus
                 var EnemiesTxt = "";
 
                 //Show Enemies
-                var enemies = HeroManager.Enemies.Where(a => a.IsEnemy && a.IsValid);
+                var enemies = EntityManager.Heroes.Enemies.Where(a => a.IsEnemy && a.IsValid);
                 Vector2 WTS = Drawing.WorldToScreen(Player.Instance.Position);
 
                 foreach (var enemy in enemies)

@@ -237,7 +237,7 @@ namespace kZKarthus
             if (!Program.LagFree(3))
                 return;
 
-            foreach (var enemy in HeroManager.Enemies.Where(enemy => enemy.IsValid))
+            foreach (var enemy in EntityManager.Heroes.Enemies.Where(enemy => enemy.IsValid))
             {
                 var ChampionInfoOne = ChampionInfoList.Find(x => x.NetworkId == enemy.NetworkId);
                 if (enemy.IsVisible && !enemy.IsDead && enemy != null && enemy.IsValidTarget())
@@ -341,9 +341,9 @@ namespace kZKarthus
             float positionDraw = 0;
             var FillColor = System.Drawing.Color.GreenYellow;
             var Color = System.Drawing.Color.Azure;
-            float offset = 0;
+            //float offset = 0;
 
-            foreach (var enemy in HeroManager.Enemies.Where(a => a.IsEnemy && a.IsValid))
+            foreach (var enemy in EntityManager.Heroes.Enemies.Where(a => a.IsEnemy && a.IsValid))
             {
                 var kolor = System.Drawing.Color.GreenYellow;
 
@@ -521,7 +521,7 @@ namespace kZKarthus
                 var EnemiesTxt = "";
 
                 //Show Enemies
-                var enemies = HeroManager.Enemies.Where(a => a.IsEnemy && a.IsValid);
+                var enemies = EntityManager.Heroes.Enemies.Where(a => a.IsEnemy && a.IsValid);
                 Vector2 WTS = Drawing.WorldToScreen(Player.Instance.Position);
 
                 foreach (var enemy in enemies)

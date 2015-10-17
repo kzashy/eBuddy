@@ -21,8 +21,6 @@ C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\bin\Debug\Newtonsoft.Json
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\obj\Debug\kZ-Karthus.exe
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\obj\Debug\kZ-Karthus.pdb
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\kZ-Karthus.exe.config
-C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\obj\Debug\kZ-Karthus.exe
-C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\obj\Debug\kZ-Karthus.pdb
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\kZ-Karthus.exe
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\kZ-Karthus.pdb
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\EloBuddy.dll
@@ -31,4 +29,5 @@ C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\EloB
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\SharpDX.Direct3D9.dll
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\SharpDX.dll
 C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\obj\Debug\kZ-Karthus.csprojResolveAssemblyReference.cache
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\obj\Debug\kZ-Karthus.exe
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\kZ-Karthus\kZ-Karthus\obj\Debug\kZ-Karthus.pdb
