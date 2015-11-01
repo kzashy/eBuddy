@@ -144,7 +144,6 @@ namespace kZKarthus
                 Vector2 WTS = Drawing.WorldToScreen(Player.Instance.Position);
 
                 ///////////////////////////////////////////////////
-
                 foreach (var enemy in enemies)
                 {
                     if ((GetTargetHealth(enemy) - RDamage(enemy)) <= 0)
@@ -180,7 +179,7 @@ namespace kZKarthus
 
                 if (EnemiesTxt != "")
                 {
-                    if (Settings.ultSecure && EnemiesRange)
+                    if (Settings.ultSecure && !EnemiesRange)
                     {
                         if (SpellManager.R.IsLearned && SpellManager.R.IsReady())
                         {

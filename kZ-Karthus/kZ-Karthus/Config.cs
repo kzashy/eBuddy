@@ -27,7 +27,7 @@ namespace kZKarthus
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             Menu.AddGroupLabel("kZ-Karthus");
             Menu.AddSeparator();
-            Menu.AddLabel("Version : 1.0.4.58");
+            Menu.AddLabel("Version : 1.0.4.72");
             Menu.AddLabel("Author : Kzashy");
 
             // Initialize the modes
@@ -150,7 +150,7 @@ namespace kZKarthus
                     //_autoUltOnDeath = Menu.Add("autoUltDeath", new CheckBox("Use Ultimate automaticaly", true));
                     _useIgnite = Menu.Add("useIgnite", new CheckBox("Use Ignite If Killable", true));
                     _useUltKS = Menu.Add("useUltKS", new CheckBox("Use Ultimate KS", true));
-                    _ultSecure = Menu.Add("ultSecure", new CheckBox("Ult - Secure mode only! (Ult only on passive or if don't have enemy on minimum security range[1450])", true));
+                    _ultSecure = Menu.Add("ultSecure", new CheckBox("Ult - Secure mode only! (Ult only on passive or if don't have enemy on minimum security range[2000])", true));
                     _saveE = Menu.Add("ESave", new CheckBox("Auto switch E to save MP (Turn off if you have problems with E use.)", true));
                 }
 
