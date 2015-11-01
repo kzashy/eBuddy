@@ -1,5 +1,11 @@
 ﻿using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using EloBuddy;
+using EloBuddy.SDK;
+using EloBuddy.SDK.Constants;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable MemberHidesStaticFromOuterClass
@@ -21,7 +27,7 @@ namespace kZKarthus
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             Menu.AddGroupLabel("kZ-Karthus");
             Menu.AddSeparator();
-            Menu.AddLabel("Version : 1.0.2.16");
+            Menu.AddLabel("Version : 1.0.4.58");
             Menu.AddLabel("Author : Kzashy");
 
             // Initialize the modes
@@ -64,6 +70,10 @@ namespace kZKarthus
                 Menu = Config.Menu.AddSubMenu("Prediction");
                 PredictionMenu.Initialize();
 
+                //SaveMe
+                Menu = Config.Menu.AddSubMenu("SaveMe");
+                SaveMeMenu.Initialize();
+
             }
 
             public static void Initialize()
@@ -78,6 +88,7 @@ namespace kZKarthus
                 private static readonly CheckBox _useAA;
                 private static readonly CheckBox _useAC;
                 private static readonly CheckBox _useUltKS;
+                private static readonly CheckBox _ultSecure;
                 private static readonly CheckBox _saveE;
                 private static readonly CheckBox _useIgnite;
 
@@ -104,6 +115,10 @@ namespace kZKarthus
                 public static bool useUltKS
                 {
                     get { return _useUltKS.CurrentValue; }
+                }
+                public static bool ultSecure
+                {
+                    get { return _ultSecure.CurrentValue; }
                 }
                 public static bool saveE
                 {
@@ -132,8 +147,10 @@ namespace kZKarthus
 
                     Menu.AddSeparator();
                     Menu.AddGroupLabel("Misc");
+                    //_autoUltOnDeath = Menu.Add("autoUltDeath", new CheckBox("Use Ultimate automaticaly", true));
                     _useIgnite = Menu.Add("useIgnite", new CheckBox("Use Ignite If Killable", true));
                     _useUltKS = Menu.Add("useUltKS", new CheckBox("Use Ultimate KS", true));
+                    _ultSecure = Menu.Add("ultSecure", new CheckBox("Ult - Secure mode only! (Ult only on passive or if don't have enemy on minimum security range[1450])", true));
                     _saveE = Menu.Add("ESave", new CheckBox("Auto switch E to save MP (Turn off if you have problems with E use.)", true));
                 }
 
@@ -419,6 +436,84 @@ namespace kZKarthus
                         {
                             sender.DisplayName = wMode[changeArgs.NewValue];
                         };
+                }
+
+                public static void Initialize()
+                {
+                }
+            }
+
+            public static class SaveMeMenu
+            {
+                private static readonly CheckBox _useSeraphsDmg;
+                private static readonly CheckBox _useSeraphsCC;
+                private static readonly CheckBox _useZhonyasDmg;
+                private static readonly CheckBox _useZhonyasCC;
+                private static readonly CheckBox _useSpellshields;
+
+                public static bool useSeraphsDmg
+                {
+                    get { return _useSeraphsDmg.CurrentValue; }
+                }
+                public static bool useSeraphsCC
+                {
+                    get { return _useSeraphsCC.CurrentValue; }
+
+                }
+                public static bool useZhonyasDmg
+                {
+                    get { return _useZhonyasDmg.CurrentValue; }
+                }
+                public static bool useZhonyasCC
+                {
+                    get { return _useZhonyasCC.CurrentValue; }
+                }
+                public static bool useSpellshields
+                {
+                    get { return _useSpellshields.CurrentValue; }
+                }
+
+                public static readonly CheckBox[] _skills = new CheckBox[EntityManager.Heroes.Enemies.Count() * 4];
+
+                static SaveMeMenu()
+                {
+                    // Here is another option on how to use the menu, but I prefer the
+                    // way that I used in the combo class
+                    Menu.AddGroupLabel("SaveMe Options");
+                    Menu.AddSeparator();
+                    _useSeraphsDmg = Menu.Add("useSeraphsDmg", new CheckBox("Use Seraphs on incoming damage"));
+                    _useSeraphsCC = Menu.Add("useSeraphsCC", new CheckBox("Use Seraphs on incoming dangerous spells"));
+                    _useZhonyasDmg = Menu.Add("useZhonyasDmg", new CheckBox("Use Zhonyas on incoming damage"));
+                    _useZhonyasCC = Menu.Add("useZhonyasCC", new CheckBox("Use Zhonyas on incoming dangerous spells"));
+                    Menu.AddSeparator();
+                    _useSpellshields = Menu.Add("useSpellshields", new CheckBox("Use protections on incoming dangerous spells :"));
+                    Menu.AddSeparator();
+
+                    var enemies = EntityManager.Heroes.Enemies;
+                    for (int j = 0; j < enemies.Count(); j++)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            string skill = "";
+                            switch (i)
+                            {
+                                case 0:
+                                    skill = "Q";
+                                    break;
+                                case 1:
+                                    skill = "W";
+                                    break;
+                                case 2:
+                                    skill = "E";
+                                    break;
+                                case 3:
+                                    skill = "R";
+                                    break;
+                            }
+                            _skills[j * 4 + i] = Menu.Add("champ" + j + "" + i, new CheckBox("Block " + enemies[j].ChampionName + " " + skill, false));
+                        }
+                        Menu.AddSeparator();
+                    }
                 }
 
                 public static void Initialize()

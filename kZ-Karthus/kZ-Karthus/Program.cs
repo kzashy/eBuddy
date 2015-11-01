@@ -53,9 +53,10 @@ namespace kZKarthus
                 Config.Initialize();
                 SpellManager.Initialize();
                 ModeManager.Initialize();
+                SaveMe.Initialize();
 
                 Chat.Print("<font color=\"#c71ef9\">kZ-Karthus by</font> <font color=\"#1bd6eb\">Kzashy</font> - <font color=\"#8ee51b\"> loaded, have fun!</font>");
-                Chat.Print("<font color=\"#c71ef9\"> Version :</font> <font color=\"#fe5212\">1.0.2.16</font>");
+                Chat.Print("<font color=\"#c71ef9\">Version :</font> <font color=\"#fe5212\">1.0.4.58</font>");
             } catch (Exception e)
             {
                 //
@@ -331,10 +332,10 @@ namespace kZKarthus
             {
 
             //DRAW CPINFO
-            bool blink = true;
+            //bool blink = true;
 
-            if ((int)(Game.Time * 10) % 2 == 0)
-                blink = false;
+            //if ((int)(Game.Time * 10) % 2 == 0)
+               // blink = false;
 
             float posY = ((float)SettingsDraw.PosY * 0.01f) * Drawing.Height;
             float posX = ((float)SettingsDraw.PosX * 0.01f) * Drawing.Width;

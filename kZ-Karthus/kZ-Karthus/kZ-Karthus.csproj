@@ -69,6 +69,7 @@
     <Compile Include="Modes\ModeBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveMe.cs" />
     <Compile Include="SpellManager.cs" />
   </ItemGroup>
   <ItemGroup>

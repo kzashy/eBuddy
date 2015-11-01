@@ -137,10 +137,13 @@ namespace kZKarthus
             if (Settings.useUltKS)
             {
                 var EnemiesTxt = "";
+                var EnemiesRange = false;
 
                 //Show Enemies
                 var enemies = EntityManager.Heroes.Enemies.Where(a => a.IsEnemy && a.IsValid);
                 Vector2 WTS = Drawing.WorldToScreen(Player.Instance.Position);
+
+                ///////////////////////////////////////////////////
 
                 foreach (var enemy in enemies)
                 {
@@ -148,24 +151,63 @@ namespace kZKarthus
                     {
                         if (!enemy.IsDead)
                         {
-                            EnemiesTxt = enemy.BaseSkinName + " | ";
+                            // CHECK SEC ULT
 
+                            if (Settings.ultSecure)
+                            {
+                                if(Player.Instance.IsDead || Player.Instance.IsZombie)
+                                {
+                                    EnemiesTxt = enemy.BaseSkinName + " | ";
+                                }
+                                else
+                                {
+                                    EnemiesTxt = enemy.BaseSkinName + " | ";
+                                    if(enemy.Distance(Player.Instance)<2000)
+                                    {
+                                        EnemiesRange = true;
+                                    }
+                                }
+
+                            } else
+                            {
+                                EnemiesTxt = enemy.BaseSkinName + " | ";
+                            }
+
+                            //
                         }
                     }
                 }
 
                 if (EnemiesTxt != "")
                 {
-                    if (SpellManager.R.IsLearned && SpellManager.R.IsReady())
+                    if (Settings.ultSecure && EnemiesRange)
                     {
-                        var Target = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
-                        var Pred = SpellManager.R.GetPrediction(Target);
-                        if (Target != null && Target.IsValid)
+                        if (SpellManager.R.IsLearned && SpellManager.R.IsReady())
                         {
-                            SpellManager.R.Cast(Pred.CastPosition);
+                            var Target = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
+                            var Pred = SpellManager.R.GetPrediction(Target);
+                            if (Target != null && Target.IsValid)
+                            {
+                                SpellManager.R.Cast(Pred.CastPosition);
+                            }
+                        }
+                    }
+
+                    if (!Settings.ultSecure)
+                    {
+                        if (SpellManager.R.IsLearned && SpellManager.R.IsReady())
+                        {
+                            var Target = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Magical);
+                            var Pred = SpellManager.R.GetPrediction(Target);
+                            if (Target != null && Target.IsValid)
+                            {
+                                SpellManager.R.Cast(Pred.CastPosition);
+                            }
                         }
                     }
                 }
+
+                //////////////////////////////////////////////////////
 
             }
         }
@@ -247,6 +289,7 @@ namespace kZKarthus
                                 
             }catch (Exception e)
                 {
+                    //e.Message;
                     // Please enable the debug window to see and solve the exceptions that might occur!
                     //Logger.Log(LogLevel.Error, "Error executing mode '{0}'\n{1}", mode.GetType().Name, e);
                 }
