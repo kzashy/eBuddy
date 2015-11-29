@@ -1,0 +1,11 @@
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\Dancing Cassio.exe.config
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\Dancing Cassio.exe
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\Dancing Cassio.pdb
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\EloBuddy.dll
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\SharpDX.dll
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\obj\Debug\Dancing Cassio.exe
+C:\Users\Kakrashyna\Documents\GitHub\eBuddy\Dancing Cassio\obj\Debug\Dancing Cassio.pdb

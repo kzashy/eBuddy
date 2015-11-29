@@ -22,8 +22,10 @@ using ComboAuto = kZKarthus.Modes.Combo;
 
 namespace kZKarthus
 {
-    public static class Program
+    public class Program
     {
+        //public static Helper Helper;
+
         // Change this line to the champion you want to make the addon for,
         // watch out for the case being correct!
         public const string ChampName = "Karthus";
@@ -54,6 +56,8 @@ namespace kZKarthus
                 SpellManager.Initialize();
                 ModeManager.Initialize();
                 SaveMe.Initialize();
+
+                //Helper = new Helper();
 
                 Chat.Print("<font color=\"#c71ef9\">kZ-Karthus by</font> <font color=\"#1bd6eb\">Kzashy</font> - <font color=\"#8ee51b\"> loaded, have fun!</font>");
                 Chat.Print("<font color=\"#c71ef9\">Version :</font> <font color=\"#fe5212\">1.0.4.72</font>");
